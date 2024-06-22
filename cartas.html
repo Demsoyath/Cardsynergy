@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genos Cardsynergy</title>
+    <link rel="stylesheet" href="cartas.css">
+</head>
+<body>
+    <h1>Genos: Sinergia de Cartas</h1>
+    <div class="container">
+        <form>
+            <div>
+                <p>Por favor, selecione a quantidade de cartas que você já possui e clique no botão para gerar os campos de cartas.</p>
+                <label for="numCards">Quantidade de cartas que você já possui:</label>
+                <select id="numCards">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button type="button" onclick="generateCardFields()">Gerar Campos de Cartas</button>
+            <div id="cardFields"></div>
+            <button type="button" id="findComboButton" onclick="findBestCombo()" style="display:none;">Encontrar Melhor Combinação</button>
+        </form>
+        <div class="results">
+            <div id="result" class="result-box"></div>
+            <div id="cardImages" class="card-images-container"></div>
+            <div id="additionalCombos" class="result-box"></div>
+            <div id="totalCombinations" class="result-box"></div>
+        </div>
+    </div>
+    <script src="cartas.js"></script>
+</body>
+</html>
