@@ -241,31 +241,39 @@ function findBestCombo() {
         selectedCards.push(selectedCard);
     }
 
-    const maxSynergy = 6;
     const allCards = Object.keys(cards);
     const remainingCards = allCards.filter(card => !selectedCards.includes(card));
 
-    const bestCombo = [];
-    const requiredCards = maxSynergy - selectedCards.length;
-
-    for (const card of remainingCards) {
-        let synergyCount = 0;
-        for (const selectedCard of selectedCards) {
+    const synergiesCount = {};
+    remainingCards.forEach(card => {
+        synergiesCount[card] = 0;
+        selectedCards.forEach(selectedCard => {
             if (cards[selectedCard].synergies.includes(card)) {
-                synergyCount++;
+                synergiesCount[card]++;
             }
-        }
+        });
+    });
 
-        bestCombo.push({ card, synergyCount });
-    }
+    // Prioritize diversity by calculating a score
+    const cardScores = remainingCards.map(card => {
+        const elementSynergyCount = selectedCards.reduce((acc, selectedCard) => {
+            if (cards[selectedCard].synergies.includes(card)) {
+                acc[cards[selectedCard].element] = (acc[cards[selectedCard].element] || 0) + 1;
+            }
+            return acc;
+        }, {});
+        const uniqueElementsCount = Object.keys(elementSynergyCount).length;
+        return { card, score: synergiesCount[card] + uniqueElementsCount };
+    });
 
-    bestCombo.sort((a, b) => b.synergyCount - a.synergyCount);
+    cardScores.sort((a, b) => b.score - a.score);
 
-    const bestCards = bestCombo.slice(0, requiredCards).map(c => cards[c.card]);
+    const requiredCards = Math.min(6 - selectedCards.length, cardScores.length);
+    const bestCards = cardScores.slice(0, requiredCards).map(c => cards[c.card]);
 
     const additionalCombos = [];
-    for (let i = 1; i <= 10; i++) {
-        const combo = bestCombo.slice(i * requiredCards, (i + 1) * requiredCards).map(c => cards[c.card]);
+    for (let i = requiredCards; i < cardScores.length; i += requiredCards) {
+        const combo = cardScores.slice(i, i + requiredCards).map(c => cards[c.card]);
         if (combo.length === requiredCards) {
             additionalCombos.push(combo.map(card => card.name).join(', '));
         }
@@ -309,4 +317,25 @@ function factorial(num) {
         result *= i;
     }
     return result;
+}
+
+const modal = document.getElementById("myModal");
+const modalImg = document.getElementById("img01");
+const span = document.getElementsByClassName("close")[0];
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('card-image')) {
+        modal.style.display = "flex";
+        modalImg.src = e.target.src;
+    }
+});
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+modal.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
