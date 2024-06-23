@@ -64,7 +64,6 @@ nav {
     text-decoration: underline;
 }
 
-/* Estilos do conteúdo principal */
 .container {
     width: 100%;
     display: flex;
@@ -192,8 +191,8 @@ button:hover {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 80%;
+    width: 20%;
+    max-width: 20%;
 }
 
 .close {
@@ -213,21 +212,20 @@ button:hover {
     cursor: pointer;
 }
 
-/* Media query para telas menores */
 @media screen and (max-width: 768px) {
     .introduction {
         grid-template-columns: 1fr;
-        margin-left: 20px; /* Ajuste a margem esquerda para telas menores */
-        padding: 20px; /* Ajuste o padding para telas menores */
+        margin-left: 20px;
+        padding: 20px;
     }
 
     .intro-image img {
-        width: 100%; /* Ajuste a largura da imagem para ocupar 100% do contêiner */
+        width: 100%;
         height: auto;
     }
 
     .modal-content {
-        width: 80%; /* Ajuste o modal para ser mais responsivo */
+        width: 80%;
         max-width: 80%;
     }
 }

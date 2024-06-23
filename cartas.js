@@ -254,7 +254,6 @@ function findBestCombo() {
         });
     });
 
-    // Prioritize diversity by calculating a score
     const cardScores = remainingCards.map(card => {
         const elementSynergyCount = selectedCards.reduce((acc, selectedCard) => {
             if (cards[selectedCard].synergies.includes(card)) {
