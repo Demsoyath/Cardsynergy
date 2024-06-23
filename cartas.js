@@ -194,7 +194,7 @@ function generateCardFields() {
     }
 
     const findComboButton = document.getElementById('findComboButton');
-    findComboButton.style.display = 'none'; // Hide initially
+    findComboButton.style.display = 'none';
 
     const selects = document.querySelectorAll('select');
     let allSelected = true;
@@ -206,6 +206,11 @@ function generateCardFields() {
     if (allSelected) {
         findComboButton.style.display = 'block';
     }
+
+    window.scrollBy({
+        top: 300,
+        behavior: 'smooth'
+    });
 }
 
 function ensureUniqueSelection() {
