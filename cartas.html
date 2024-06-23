@@ -3,34 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genos Cardsynergy</title>
+    <title>Arondight Cardsynergy</title>
     <link rel="stylesheet" href="cartas.css">
 </head>
 <body>
-    <h1>Genos: Sinergia de Cartas</h1>
-    <div class="container">
-        <form>
-            <div>
-                <p>Por favor, selecione a quantidade de cartas que você já possui e clique no botão para gerar os campos de cartas.</p>
-                <label for="numCards">Quantidade de cartas que você já possui:</label>
-                <select id="numCards">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <button type="button" onclick="generateCardFields()">Gerar Campos de Cartas</button>
-            <div id="cardFields"></div>
-            <button type="button" id="findComboButton" onclick="findBestCombo()" style="display:none;">Encontrar Melhor Combinação</button>
-        </form>
-        <div class="results">
-            <div id="result" class="result-box"></div>
-            <div id="cardImages" class="card-images-container"></div>
-            <div id="additionalCombos" class="result-box"></div>
-            <div id="totalCombinations" class="result-box"></div>
+    <nav>
+        <div class="nav-left">
+            <img src="drawable\arondight_logo.png" alt="Logo" class="logo">
+            <span class="site-name">Arondight: Sinergia de Cartas</span>
         </div>
+        <ul class="nav-right">
+            <li><a href="#">Introdução</a></li>
+            <li><a href="#main-content">Buscar Sinergias</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="introduction" class="introduction">
+            <div class="intro-text">
+                <h1>Bem-vindo ao Arondight: Sinergia de Cartas</h1>
+                <p>Descubra as melhores combinações de cartas e otimize sua estratégia, toda a busca se baseia na sinergia que as suas cartas atuais tem com as outras cartas existentes.</p>
+            </div>
+            <div class="intro-image">
+                <img src="drawable\LENDA.png" alt="Introduction Image">
+            </div>
+        </section>
+
+        <section id="main-content" class="main-content">
+            <form>
+                <div>
+                    <p>Por favor, selecione a quantidade de cartas que você já possui e clique no botão para gerar os campos de cartas.</p>
+                    <label for="numCards">Quantidade de cartas que você já possui:</label>
+                    <select id="numCards">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="button" onclick="generateCardFields()">Gerar Campos de Cartas</button>
+                <div id="cardFields"></div>
+                <button type="button" id="findComboButton" onclick="findBestCombo()" style="display:none;">Encontrar Melhor Combinação</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <div class="results">
+                <div id="result" class="result-box"></div>
+                <div id="cardImages" class="card-images-container"></div>
+                <div id="additionalCombos" class="result-box"></div>
+                <div id="totalCombinations" class="result-box"></div>
+            </div>
+        </section>
     </div>
 
     <div id="myModal" class="modal">

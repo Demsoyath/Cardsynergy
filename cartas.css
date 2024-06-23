@@ -2,26 +2,114 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
+    padding-top: 80px;
 }
 
-h1 {
-    color: #333;
-    margin-bottom: 20px;
+nav {
+    width: 100%;
+    background-color: #6b98c7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    margin-right: 20px;
+}
+
+.site-name {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-right {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+    padding: 0;
+}
+
+.nav-right li {
+    margin-left: 20px;
+}
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-right a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.introduction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    width: 100%;
+    margin-left: 100px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-image img {
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.main-content {
+    background: #d9e6f2;
+    padding: 20px;
+    border-top: 2px solid #c1d4e8;
+    border-bottom: 2px solid #c1d4e8;
+    width: 100%;
+    max-width: 100%;
+}
+
+.results-section {
+    background: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
 }
 
 form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +145,6 @@ button:hover {
 }
 
 .results {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +152,7 @@ button:hover {
 
 .result-box {
     padding: 10px;
-    background-color: #e2e3e5;
+    background-color: #f1f1f1;
     border-left: 5px solid #6b98c7;
     border-radius: 5px;
     max-width: 500px;
@@ -77,16 +164,17 @@ button:hover {
 .card-images-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza as imagens horizontalmente */
+    justify-content: center;
     margin-top: 10px;
 }
 
 .card-image {
-    width: 100px; /* Ajuste conforme necessário */
+    width: 100px;
     height: auto;
-    margin-right: 10px; /* Espaçamento entre as imagens */
-    margin-bottom: 10px; /* Espaçamento abaixo das imagens */
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
+
 .modal {
     display: none;
     position: fixed;
