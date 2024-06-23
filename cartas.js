@@ -301,6 +301,9 @@ function findBestCombo() {
         cardImagesContainer.appendChild(cardImage);
     });
 
+    const resultsSection = document.querySelector('.results-section');
+    resultsSection.style.display = 'block';
+
     const findComboButton = document.getElementById('findComboButton');
     findComboButton.style.display = 'none';
 }
