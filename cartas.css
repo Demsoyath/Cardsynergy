@@ -1,3 +1,4 @@
+/* Reset básico e estilos gerais */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -9,6 +10,7 @@ body {
     padding-top: 80px;
 }
 
+/* Estilos da barra de navegação */
 nav {
     width: 100%;
     background-color: #6b98c7;
@@ -62,6 +64,7 @@ nav {
     text-decoration: underline;
 }
 
+/* Estilos do conteúdo principal */
 .container {
     width: 100%;
     display: flex;
@@ -72,13 +75,10 @@ nav {
 .introduction {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: #fff;
-    width: 100%;
-    margin-left: 100px;
-    padding: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     gap: 20px;
-
+    padding: 5%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .intro-text {
@@ -88,7 +88,7 @@ nav {
 }
 
 .intro-image img {
-    width: 500px;
+    width: 100%;
     height: auto;
     border-radius: 10px;
 }
@@ -192,8 +192,8 @@ button:hover {
 .modal-content {
     margin: auto;
     display: block;
-    width: 20%;
-    max-width: 700px;
+    width: 80%;
+    max-width: 80%;
 }
 
 .close {
@@ -211,4 +211,23 @@ button:hover {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Media query para telas menores */
+@media screen and (max-width: 768px) {
+    .introduction {
+        grid-template-columns: 1fr;
+        margin-left: 20px; /* Ajuste a margem esquerda para telas menores */
+        padding: 20px; /* Ajuste o padding para telas menores */
+    }
+
+    .intro-image img {
+        width: 100%; /* Ajuste a largura da imagem para ocupar 100% do contêiner */
+        height: auto;
+    }
+
+    .modal-content {
+        width: 80%; /* Ajuste o modal para ser mais responsivo */
+        max-width: 80%;
+    }
 }
