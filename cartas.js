@@ -152,6 +152,7 @@ const cards = {
 };
 
 function populateSelectOptions(selectElement, selectedValues) {
+    selectElement.innerHTML = '';
     for (const key in cards) {
         if (!selectedValues.includes(key)) {
             const option = document.createElement('option');
@@ -176,21 +177,55 @@ function generateCardFields() {
     const selectedValues = [];
 
     for (let i = 1; i <= numCards; i++) {
+        const fieldContainer = document.createElement('div');
+        fieldContainer.style.display = 'flex';
+        fieldContainer.style.flexDirection = 'column';
+        fieldContainer.style.alignItems = 'stretch';
+        fieldContainer.style.marginBottom = '10px';
+
         const label = document.createElement('label');
         label.htmlFor = `card${i}`;
         label.textContent = `Carta ${i}:`;
+        label.style.marginTop = '20px';
+        fieldContainer.appendChild(label);
+
+        const selectContainer = document.createElement('div');
+        selectContainer.style.display = 'flex';
+        selectContainer.style.justifyContent = 'space-between';
+        selectContainer.style.marginTop = '10px';
 
         const select = document.createElement('select');
         select.id = `card${i}`;
         select.name = `card${i}`;
         select.onchange = ensureUniqueSelection;
-
+        select.style.flexGrow = '2';
+        select.style.marginRight = '10px';
+        select.style.width = '70%';
         populateSelectOptions(select, selectedValues);
 
-        selectedValues.push(select.value);
+        const elementSelect = document.createElement('select');
+        elementSelect.className = 'element-filter';
+        elementSelect.style.flexGrow = '1';
+        elementSelect.style.width = '30%';
 
-        cardFields.appendChild(label);
-        cardFields.appendChild(select);
+        const elements = [...new Set(Object.values(cards).map(card => card.element))];
+        elements.forEach(element => {
+            const option = document.createElement('option');
+            option.value = element;
+            option.textContent = element;
+            elementSelect.appendChild(option);
+        });
+
+        elementSelect.onchange = () => filterOptions(select, elementSelect.value);
+
+        selectContainer.appendChild(select);
+        selectContainer.appendChild(elementSelect);
+
+        fieldContainer.appendChild(selectContainer);
+
+        cardFields.appendChild(fieldContainer);
+
+        selectedValues.push(select.value);
     }
 
     const findComboButton = document.getElementById('findComboButton');
@@ -210,6 +245,20 @@ function generateCardFields() {
     window.scrollBy({
         top: 300,
         behavior: 'smooth'
+    });
+}
+
+function filterOptions(select, elementFilter) {
+    const options = select.querySelectorAll('option');
+    const element = elementFilter.trim().toLowerCase();
+
+    options.forEach(option => {
+        const cardElement = cards[option.value].element.toLowerCase();
+        if (cardElement.includes(element)) {
+            option.style.display = '';
+        } else {
+            option.style.display = 'none';
+        }
     });
 }
 
